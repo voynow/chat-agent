@@ -21,7 +21,7 @@ The Chat-Agent system is designed to execute GPT queries using intelligent tool 
 
 ### setup environment and run demo
 ```bash
-virtuelenv venv
+virtualenv venv
 
 source venv/bin/activate
 
