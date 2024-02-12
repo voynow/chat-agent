@@ -63,12 +63,12 @@ def select_tool(query: str, func_map: dict[str, Callable]) -> str:
 
 
 def get_summarization_map() -> dict[str, Callable]:
-    """Used if task requires full paper summarization."""
+    """Used if query mentions summarization"""
     return SUMMARIZATION_FUNC_MAP
 
 
 def get_rag_map() -> dict[str, Callable]:
-    """Used if task does not require full paper summarization."""
+    """Used if query DOES NOT mention summarization"""
     return RAG_FUNC_MAP
 
 
