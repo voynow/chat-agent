@@ -78,16 +78,24 @@ HIGH_LEVEL_FUNC_MAP = {
 }
 
 
-def runner(query: str):
+def runner(query: str) -> dict:
     """Executes a query using a hierarchical tool selection process"""
+    tools_used = []
 
     # select high level tool (e.g. select RAG or summarization)
     tool_name = select_tool(query=query, func_map=HIGH_LEVEL_FUNC_MAP)
     low_level_func_map = HIGH_LEVEL_FUNC_MAP[tool_name]()
+    tools_used.append(tool_name)
 
     # select low level tool (e.g. select rag_metagpt, rag_autogen, etc.)
     tool_name = select_tool(query, low_level_func_map)
     query_func = low_level_func_map[tool_name]
     response = query_func(query)
+    tools_used.append(tool_name)
 
-    return response
+    response_obj = {
+        "tools_used": tools_used,
+        "response": response,
+    }
+    logging.info(response_obj)
+    return response_obj

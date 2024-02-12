@@ -11,7 +11,7 @@ def rag_query(input_dir: str, query: str) -> str:
     reader = SimpleDirectoryReader(input_dir, recursive=True)
     documents = reader.load_data()
     index = VectorStoreIndex.from_documents(documents)
-    return index.as_query_engine().query(query)
+    return index.as_query_engine().query(query).response
 
 
 def summarization_query(pdf_path: str, query: str) -> str:
@@ -20,4 +20,4 @@ def summarization_query(pdf_path: str, query: str) -> str:
     with fitz.open(pdf_path) as doc:
         for page in doc:
             text += page.get_text()
-    return OpenAI().complete(query)
+    return OpenAI().complete(query).text

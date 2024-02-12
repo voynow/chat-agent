@@ -1,6 +1,9 @@
+import json
+
 import agent
 
 sep_str = "*" * 100
+outfile = "demo_data.json"
 
 queries = [
     "Summarize the metagpt paper.",
@@ -10,8 +13,10 @@ queries = [
     "Compare and contrast how metagpt and autogen handle roles.",
 ]
 
-
+demo_data = {}
 for query in queries:
     print(f"{sep_str}\nagent.runner(query={query})\n{sep_str}")
-    response = agent.runner(query=query)
-    print(f"Agent response: {response}")
+    demo_data[query] = agent.runner(query=query)
+
+print(f"Writing to {outfile}")
+json.dump(demo_data, open(outfile, "w"), indent=4)
