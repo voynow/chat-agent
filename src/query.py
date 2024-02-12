@@ -3,11 +3,10 @@ from llama_index import (
     SimpleDirectoryReader,
     VectorStoreIndex,
 )
-from llama_index.core.base_query_engine import BaseQueryEngine
 from llama_index.llms import OpenAI
 
 
-def rag_query(input_dir, query) -> BaseQueryEngine:
+def rag_query(input_dir: str, query: str) -> str:
     """Build rag pipeline on source documents and execute query."""
     reader = SimpleDirectoryReader(input_dir)
     documents = reader.load_data()
@@ -15,7 +14,7 @@ def rag_query(input_dir, query) -> BaseQueryEngine:
     return index.as_query_engine().query(query)
 
 
-def summarization_query(pdf_path, query) -> str:
+def summarization_query(pdf_path: str, query: str) -> str:
     """Send entire document to query engine for summarization."""
     text = ""
     with fitz.open(pdf_path) as doc:
