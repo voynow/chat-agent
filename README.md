@@ -13,9 +13,16 @@ pip install -r requirements.txt
 export OPENAI_API_KEY=your-api-key
 ```
 
+### Run dev tests
+```bash
+pip install -r requirements.dev.txt
+
+pytest
+```
+
 ### Test queries
-Summarize the metagpt paper.
-Summarize the autogen paper.
-Compare and contrast how metagpt and autogen handle roles.
-What is conversation programming and how does autogen use it?
-What communication protocols are best for metagpt?
+Summarize the metagpt paper.<br>
+Summarize the autogen paper.<br>
+Compare and contrast how metagpt and autogen handle roles.<br>
+What is conversation programming and how does autogen use it?<br>
+What communication protocols are best for metagpt?<br>
