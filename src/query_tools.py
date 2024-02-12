@@ -1,4 +1,4 @@
-from src.query import rag_query, summarization_query
+from query import rag_query, summarization_query
 
 
 def summarize_metagpt(query: str) -> str:
@@ -12,15 +12,15 @@ def summarize_autogen(query: str) -> str:
 
 
 def rag_metagpt(query: str) -> str:
-    """Use this function for non-summarization queries on the MetaGPT paper."""
+    """Use this function for queries on the MetaGPT paper."""
     return rag_query("data/metagpt", query)
 
 
 def rag_autogen(query: str) -> str:
-    """Use this function for non-summarization queries on the AutoGen paper."""
+    """Use this function for queries on the AutoGen paper."""
     return rag_query("data/autogen", query)
 
 
 def rag_metagpt_and_autogen(query: str) -> str:
-    """Use this function for non-summarization queries on both the MetaGPT and AutoGen papers."""
+    """Use this function for queries on both the MetaGPT and AutoGen papers."""
     return rag_query("data", query)

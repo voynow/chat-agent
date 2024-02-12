@@ -21,10 +21,3 @@ def summarization_query(pdf_path: str, query: str) -> str:
         for page in doc:
             text += page.get_text()
     return OpenAI().complete(query)
-
-
-response = summarization_query(
-    "data/autogen/AutoGen.pdf", "Summarize the autogen paper."
-)
-
-print(response)
