@@ -1,5 +1,7 @@
 import agent
 
+sep_str = "*" * 100
+
 queries = [
     "Summarize the metagpt paper.",
     "Summarize the autogen paper.",
@@ -10,8 +12,6 @@ queries = [
 
 
 for query in queries:
-    print("*" * 75)
-    print(f"agent.runner(query={query})")
-    print("*" * 75)
+    print(f"{sep_str}\nagent.runner(query={query})\n{sep_str}")
     response = agent.runner(query=query)
     print(f"Agent response: {response}")

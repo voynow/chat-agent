@@ -79,14 +79,7 @@ HIGH_LEVEL_FUNC_MAP = {
 
 
 def runner(query: str):
-    """
-    Hierarchical agent tasked with steps of tool selection before query execution
-
-    Step 1: Classify the query as either summarization or RAG
-    Step 2: Retrieve the appropriate tool map given classification
-    Step 3: Classify the query as either metagpt, autogen, or potentially both
-    Step 4: Retrieve the appropriate tool and execute the query
-    """
+    """Executes a query using a hierarchical tool selection process"""
 
     # select high level tool (e.g. select RAG or summarization)
     tool_name = select_tool(query=query, func_map=HIGH_LEVEL_FUNC_MAP)
